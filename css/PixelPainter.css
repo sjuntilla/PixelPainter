@@ -22,19 +22,13 @@ h1 {
 
 }
 
-#row {
-    border: 3px solid #000;
-    background-color: #fff;
-
-}
-
 .row {
-    border: 3px solid #000;
-    background-color: #fff;
+    border: 1px solid #000;
+    width: 50px;
 }
 
-#col {
-    border: 3px solid #000;
-    background-color: #fff;
-
+.pixel {
+    border: 1px solid #000;
+    width: 50px;
+    height: 50px;
 }
