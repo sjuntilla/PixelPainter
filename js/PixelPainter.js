@@ -2,11 +2,10 @@ const pixelPainter = (function () {
     //VARIABLES
     let mainBody = document.getElementById('pixelPainter');
     let aColor; // active color choice
-
+    let pixels = document.getElementsByClassName('pixel'); //selects the whole canvas
+    let arr = [];
     //CHECKS/CONFIRMS MOUSE ACTIVITY
     let mouseDown = false;
-    document.onmousedown = () => mouseDown = true;
-    document.onmouseup = () => mouseDown = false;
 
 
     //GRID GENERATOR
@@ -32,6 +31,7 @@ const pixelPainter = (function () {
 
     mainBody.appendChild(getGrid(24, 26, 'pixel')); //MAIN CANVAS
 
+    //COLOR PALETTE
     let swatchTitle = document.createElement('h2');
     swatchTitle.innerHTML = 'swatches!';
     toolBox.appendChild(swatchTitle);
@@ -58,7 +58,7 @@ const pixelPainter = (function () {
         '#F4743B',
         '#EA1744'
     ];
-    // Assigns swatches based on 'color' array.
+    // Assigns swatches based on 'color' array
     let paletteSwatch = document.getElementsByClassName('palette');
     for (let i = 0; i < paletteSwatch.length; i++) {
         paletteSwatch[i].style.backgroundColor = color[i];
@@ -76,6 +76,7 @@ const pixelPainter = (function () {
     toolBox.appendChild(toolTitle);
     tools.className = 'tools';
     toolBox.appendChild(tools);
+
     // CREATES BUTTONS + CLICK EVENTS
     document.body.onmousedown = (e) => {
         buttonClick(e.target);
@@ -115,139 +116,44 @@ const pixelPainter = (function () {
     toolButtons('erase');
 
     //PAINTING
-    document.onmousedown = (e) => colorPaint(e.target);
+    document.onmousedown = (e) => {
+        mouseDown = true;
+        colorPaint(e.target);
+    }
     colorPaint = (e) => {
         if (e.className === 'pixel') {
             e.style.backgroundColor = aColor;
         }
     }
-    document.onmouseover = (e) => dragColor(e.target);
+    document.onmouseup = (e) => unClick(e.target);
+    unClick = (e) => mouseDown = false;
+
+    document.onmousemove = (e) => dragColor(e.target);
     dragColor = (e) => {
         if (mouseDown && e.className === 'pixel') {
             e.style.backgroundColor = aColor;
         }
     }
 
-    // // VARIABLES
-    // let aColor;
-    // let paintArr = [];
-    // const container = document.getElementById('pixelPainter');
-
-    // let pixels = document.getElementsByClassName('pixel');
-
-    // //MOUSE EVENTS
-    // let mouseDown = false;
-    // document.body.onmouseup = () => mouseDown = false;
-    // document.body.onmousedown = () => mouseDown = true;
-
-    // // GENERATES A CANVAS
-    // const canvas = (height, width) => {
-    //     const grid = document.createElement('div');
-    //     grid.className = 'grid';
-    //     grid.id = 'grid';
-    //     for (let i = 0; i < height; i++) {
-    //         let row = document.createElement('div');
-    //         row.className = "row";
-    //         grid.appendChild(row);
-    //         for (let j = 0; j < width; j++) {
-    //             let pixel = document.createElement('div');
-    //             pixel.className = "pixel";
-    //             row.appendChild(pixel);
-    //         }
-    //     }
-    //     return grid;
-    // };
-
-    // container.appendChild(canvas(24, 25)); // determines height + width of canvas
+    //BUTTON FUNCTIONS
+    erase = () => aColor = '#ffffff';
+    clear = () => {
+        for (let i = 0; i < pixels.length; i++) {
+            pixels[i].style.backgroundColor = 'white';
+        }
+    }
+    savePixels = () => {
+        arr = [];
+        for (let i = 0; i < pixels.length; i++) {
+            pixels[i].style.backgroundColor;
+            arr.push(pixels[i].style.backgroundColor);
+        }
+    }
+    loadPixels = () => {
+        for (let i = 0; i < pixels.length; i++) {
+            pixels[i].style.backgroundColor = arr[i];
+        }
+    }
 
 
-    // //TOOLS CONTAINER
-    // const tools = document.createElement('div');
-    // tools.className = 'tools';
-    // grid.appendChild(tools);
-
-    // //TOOL BUTTONS
-    // buttonClick = (b) => {
-    //     switch (b.id) {
-    //         case 'save':
-    //             savePixels();
-    //             break;
-    //         case 'load':
-    //             loadPixels();
-    //             break;
-    //         case 'clear':
-    //             clear();
-    //             break;
-    //         case 'erase':
-    //             erase();
-    //             break;
-    //     }
-    // }
-
-    // toolButtons = (name) => {
-    //     let b = document.createElement('div');
-    //     b.className = 'button';
-    //     b.id = name;
-    //     b.innerHTML = name;
-    //     tools.appendChild(b);
-    // }
-
-    // toolButtons('save');
-    // toolButtons('load');
-    // toolButtons('clear');
-    // toolButtons('erase');
-
-
-    // // COLOR PALETTE
-    // const colors = [
-    //     '#f4858e',
-    //     '#bf32ca',
-    //     '#a6daef',
-    //     '#d0e2ec',
-    //     '#fed88f',
-    //     '#ffffff'
-    // ];
-    // let palette = document.createElement('div');
-    // palette.className = 'palette';
-    // const swatches = canvas(4, 2);
-    // swatches.id = 'swatches';
-    // container.appendChild(palette);
-    // palette.appendChild(swatches);
-
-    // // PAINTING FUNCTIONS
-    // chooseColor = () => aColor = this.style.backgroundColor;
-    // paintPic = () => this.className === 'pixel' ? this.style.backgroundColor = aColor : this.style.backgroundColor;
-    // paintDrag = () => mouseDown && this.className === 'pixel' ? this.style.backgroundColor = aColor : this.style.backgroundColor;
-
-
-    // // EVENT LISTENERS
-    // for (let i = 0; i < pixels.length; i++) {
-    //     pixels[i].addEventListener('click', paintPic);
-    //     pixels[i].addEventListener('mouseover', paintDrag);
-    // }
-    // //LOAD
-    // loadPixels = () => {
-    //     let loaded = document.getElementsByClassName('pixel');
-    //     console.log('HELLO?');
-    // }
-    // //SAVE
-    // savePixels = () => {
-    //     let saved = document.getElementsByClassName('pixel');
-    //     paintArr.length = 0;
-    //     saved.forEach(i => paintArr.push(i));
-    //     // console.log(paintArr[0])
-    //     console.log('HELLO????');
-    // }
-
-    // //CLEAR
-    // clear = () => {
-    //     let entireGrid = document.getElementsByClassName('pixels');
-    //     for (let i = 0; i < entireGrid.length; i++) {
-    //         entireGrid[i].style.backgroundColor = '#ffffff';
-    //     }
-    // }
-    // // ERASER TOOL
-    // erase = () => {
-    //     aColor = '#ffffff';
-    // }
 })()
