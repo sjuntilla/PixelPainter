@@ -5,7 +5,7 @@ body {
     flex-direction: column;
     align-items: center;
     align-content: center;
-    background-color: #eeeaec;
+    background: url('https://i.imgur.com/peDhR97.gif') #000000 repeat;
 }
 
 #pixelPainter {
@@ -16,8 +16,8 @@ body {
     width: auto;
     padding: 20px;
     margin-top: -40px;
-    background-color: #a79594;
-    border: 10px solid #7d6b61;
+    background-color: #000000;
+    border: 10px solid #96558c;
     border-radius: 20px;
 }
 
@@ -114,19 +114,5 @@ h3 {
     flex-direction: row;
     width: 200px;
     margin: 2px;
-
-}
-
-@media screen and (max-width:400px) {
-    #pixelPainter {
-        display: flex;
-        flex: 2;
-
-    }
-
-    .grid {
-        display: flex;
-        flex: 1;
-    }
 
 }

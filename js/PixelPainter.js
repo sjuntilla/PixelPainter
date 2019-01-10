@@ -120,6 +120,20 @@ const pixelPainter = (function () {
     toolButtons('erase');
     toolButtons('fill');
 
+    //BETA COLOR WHEEL TESTING
+    // let colorTitle = document.createElement('h3');
+    // colorTitle.innerHTML = 'Color Wheel!';
+    // tools.appendChild(colorTitle);
+
+    // let cDiv = document.createElement('div');
+    // tools.appendChild(cDiv);
+    // pickColor = () => aColor = this.value;
+    // let colorWheel = document.createElement('input');
+    // colorWheel.type = 'color';
+    // colorWheel.className = 'colorWheel';
+    // cDiv.appendChild(colorWheel);
+    // colorWheel.addEventListener('input', pickColor);
+
     //PAINTING
     document.onmousedown = (e) => {
         mouseDown = true;
@@ -139,6 +153,7 @@ const pixelPainter = (function () {
             e.style.backgroundColor = aColor;
         }
     }
+
 
     //BUTTON FUNCTIONS
     erase = () => aColor = '#ffffff';
