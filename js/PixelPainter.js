@@ -96,6 +96,10 @@ const pixelPainter = (function () {
             case 'erase':
                 erase();
                 break;
+            case 'fill':
+                fill();
+                break;
+
         }
     }
 
@@ -114,6 +118,7 @@ const pixelPainter = (function () {
     toolButtons('load');
     toolButtons('clear');
     toolButtons('erase');
+    toolButtons('fill');
 
     //PAINTING
     document.onmousedown = (e) => {
@@ -152,6 +157,11 @@ const pixelPainter = (function () {
     loadPixels = () => {
         for (let i = 0; i < pixels.length; i++) {
             pixels[i].style.backgroundColor = arr[i];
+        }
+    }
+    fill = () => {
+        for (let i = 0; i < pixels.length; i++) {
+            pixels[i].style.backgroundColor = aColor;
         }
     }
 
