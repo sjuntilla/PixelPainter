@@ -120,19 +120,24 @@ const pixelPainter = (function () {
     toolButtons('erase');
     toolButtons('fill');
 
-    //BETA COLOR WHEEL TESTING
-    // let colorTitle = document.createElement('h3');
-    // colorTitle.innerHTML = 'Color Wheel!';
-    // tools.appendChild(colorTitle);
+    //COLORWHEEL
+    let colorTitle = document.createElement('h3');
+    colorTitle.innerHTML = 'Color Wheel!';
+    tools.appendChild(colorTitle);
 
-    // let cDiv = document.createElement('div');
-    // tools.appendChild(cDiv);
-    // pickColor = () => aColor = this.value;
-    // let colorWheel = document.createElement('input');
-    // colorWheel.type = 'color';
-    // colorWheel.className = 'colorWheel';
-    // cDiv.appendChild(colorWheel);
-    // colorWheel.addEventListener('input', pickColor);
+    let cDiv = document.createElement('div');
+    cDiv.classname = 'cdiv';
+    toolBox.appendChild(cDiv);
+
+    let colorWheel = document.createElement('input');
+    colorWheel.type = 'color';
+    colorWheel.className = 'colorWheel';
+    cDiv.appendChild(colorWheel);
+    colorWheel.addEventListener('input', (e) => {
+        aColor = e.target.value;
+        console.log(aColor + ' is currently selected!');
+    });
+
 
     //PAINTING
     document.onmousedown = (e) => {
