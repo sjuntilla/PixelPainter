@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css?family=Staatliches');
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    background: url('https://i.imgur.com/peDhR97.gif') #000000 repeat;
+}
+
+#pixelPainter {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: auto;
+    width: auto;
+    padding: 20px;
+    margin-top: -40px;
+    background-color: #000000;
+    border: 10px solid #96558c;
+    border-radius: 20px;
+}
+
+h1 {
+    display: flex;
+    align-content: center;
+    position: relative;
+    margin-right: 20px;
+    font-family: 'Staatliches', cursive;
+    font-size: 75px;
+    color: #dcb4d5;
+    text-shadow: 3px 3px #96558c;
+}
+
+h2 {
+    display: flex;
+    align-content: center;
+    margin-top: -15px;
+    margin-left: -10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    font-family: 'Staatliches', cursive;
+    font-size: 25px;
+    color: #dcb4d5;
+}
+
+h3 {
+    display: flex;
+    align-content: center;
+    margin-top: 10px;
+    margin-left: -10px;
+    margin-bottom: 0px;
+    margin-right: 20px;
+    font-family: 'Staatliches', cursive;
+    font-size: 25px;
+    color: #dcb4d5;
+}
+
+#toolbox {
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+}
+
+
+.button {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-grow: 1;
+    margin: 5px;
+    justify-content: space-between;
+    font-family: 'Staatliches', cursive;
+    color: #eeeaec;
+    font-size: 20px;
+    border: 1px solid #eeeaec;
+    border-radius: 5px;
+    background-color: #dcb4d5;
+    padding: 5px;
+}
+
+.row {
+    display: flex;
+}
+
+.pixel {
+    display: flex;
+    border: 1px solid #eeeaec;
+    background-color: #ffffff;
+    width: 15px;
+    height: 15px;
+}
+
+.grid {
+    display: flex;
+    margin-top: -10px;
+
+
+}
+
+.palette {
+    display: flex;
+    border: 1px solid #dcb4d5;
+    background-color: #ffffff;
+    width: 40px;
+    height: 40px;
+
+}
+
+.tools {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 200px;
+    margin: 2px;
+
+}
+
+.cdiv {
+    display: flex;
+    float: left;
+    position: absolute;
+    top: 10px;
+}
